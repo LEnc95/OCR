@@ -61,6 +61,12 @@
             height: 20px;
             background-color: #4CAF50;
         }
+        #image-preview {
+            margin-top: 20px;
+            max-width: 100%;
+            max-height: 400px;
+            display: none; /* Hide by default */
+        }
     </style>
     <script>
         let selectedFile;
@@ -69,6 +75,7 @@
         document.addEventListener('DOMContentLoaded', function () {
             const dropZone = document.getElementById('drop-zone');
             const fileInput = document.querySelector('input[type="file"]');
+            const imagePreview = document.getElementById('image-preview');
 
             // When a file is dragged over the drop zone
             dropZone.addEventListener('dragover', function (e) {
@@ -86,21 +93,31 @@
                 dropZone.classList.remove('dragover');
                 selectedFile = e.dataTransfer.files[0];
                 fileInput.files = e.dataTransfer.files;
+                displayImagePreview(selectedFile);
                 document.getElementById('file-label').textContent = selectedFile.name;
             });
 
             // Trigger file input when drop zone is clicked
             dropZone.addEventListener('click', function () {
-                fileInput.click();  // Trigger the click event on the hidden file input
+                fileInput.click();
             });
 
             fileInput.addEventListener('change', function () {
                 selectedFile = fileInput.files[0];
+                displayImagePreview(selectedFile);
                 document.getElementById('file-label').textContent = selectedFile.name;
             });
+
+            function displayImagePreview(file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    imagePreview.src = e.target.result;
+                    imagePreview.style.display = 'block'; // Show image
+                };
+                reader.readAsDataURL(file);
+            }
         });
 
-        // JavaScript function to handle form submission with progress bar and download option
         async function uploadImage(event) {
             event.preventDefault();
 
@@ -153,12 +170,8 @@
                     result.innerHTML = `
                         <h3>Extracted Text:</h3>
                         <pre>${data.extracted_text}</pre>
-                        <button id="downloadBtn">Download Text</button>
+                        <button onclick="downloadText('${encodeURIComponent(data.extracted_text)}')">Download Text</button>
                     `;
-                    // Attach the download event after rendering the button
-                    document.getElementById('downloadBtn').addEventListener('click', function() {
-                        downloadText(data.extracted_text);
-                    });
                 }
             } catch (err) {
                 // Hide loading message
@@ -169,11 +182,14 @@
 
         // Function to download the extracted text as a .txt file
         function downloadText(text) {
-            const blob = new Blob([text], { type: 'text/plain' });
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.download = 'extracted_text.txt';
-            link.click();
+            const decodedText = decodeURIComponent(text);  // Decode any encoded text
+            const element = document.createElement('a');
+            const file = new Blob([decodedText], { type: 'text/plain' });
+            element.href = URL.createObjectURL(file);
+            element.download = 'extracted_text.txt';
+            document.body.appendChild(element);  // Required for this to work in Firefox
+            element.click();
+            document.body.removeChild(element);
         }
     </script>
 </head>
@@ -191,6 +207,9 @@
         <span id="file-label">No file selected</span>
         <button type="submit">Upload</button>
     </form>
+
+    <!-- Image Preview -->
+    <img id="image-preview" alt="Image Preview">
 
     <!-- Progress Bar -->
     <div id="progress-bar-container">

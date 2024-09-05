@@ -29,12 +29,17 @@ def upload_file():
         app.logger.error('No file selected for uploading')
         return jsonify({'error': 'No file selected'}), 400
 
-    try:
-        # Ensure the file is an image
-        if not file.filename.lower().endswith(('.png', '.jpg', '.jpeg')):
-            app.logger.error('Invalid file type uploaded')
-            return jsonify({'error': 'Invalid file type. Only PNG, JPG, and JPEG are allowed.'}), 400
+    # Validate file type
+    if not file.filename.lower().endswith(('.png', '.jpg', '.jpeg')):
+        app.logger.error(f'Invalid file type uploaded: {file.filename}')
+        return jsonify({'error': 'Invalid file type. Only PNG, JPG, and JPEG are allowed.'}), 400
 
+    # Validate file size (limit to 5MB)
+    if file.content_length > 5 * 1024 * 1024:  # 5MB limit
+        app.logger.error(f'File too large: {file.filename}')
+        return jsonify({'error': 'File too large. Maximum size allowed is 5MB.'}), 400
+
+    try:
         # Convert the file to an image
         image = Image.open(file.stream)
 
@@ -60,6 +65,7 @@ def upload_file():
         return jsonify({'extracted_text': ocr_text})
     
     except Exception as e:
+        # Log the error and return an error message
         app.logger.error(f"Error processing file: {e}")
         return jsonify({'error': str(e)}), 500
 

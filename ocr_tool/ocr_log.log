@@ -1,0 +1,20 @@
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 177-266-338
+INFO:app:Processed file: Sex2.png, extracted text: Video calls and meetings for
+everyone
+...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:12:44] "POST /upload HTTP/1.1" 200 -
+INFO:app:Processed file: Sex2.png, extracted text: Video calls and meetings for
+everyone
+...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:13:09] "POST /upload HTTP/1.1" 200 -
+INFO:app:Processed file: derp.png, extracted text: ...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:13:19] "POST /upload HTTP/1.1" 200 -
+INFO:app:Processed file: Screenshotex1.png, extracted text: Overview
+
+Giant Eagle strives to be a best place t...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:13:38] "POST /upload HTTP/1.1" 200 -

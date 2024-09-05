@@ -8,74 +8,63 @@ import logging
 
 app = Flask(__name__)
 
-# Specify the path to tesseract.exe (update if installed elsewhere)
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
-
-# Set the maximum file size to 5MB (5 * 1024 * 1024 bytes)
-app.config['MAX_CONTENT_LENGTH'] = 5 * 1024 * 1024  # 5MB limit
-
-# Configure logging
+# Set up logging for OCR process
 logging.basicConfig(filename='ocr_log.log', level=logging.INFO)
 
-# Define the languages to support (English, Spanish, French, Hindi, Bengali, Tamil, etc.)
-languages = 'eng+spa+fra+hin+ben+tam+tel+pan+mar+iku'
+# Path to Tesseract (if needed)
+# pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
-# Serve the form for uploading files
+# Route to render the index.html page
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html')  # Serve index.html from the templates folder
 
-# Error handler for files exceeding the size limit
+# Error handler for files that exceed the size limit
 @app.errorhandler(413)
 def file_too_large(e):
     return jsonify({'error': 'File too large. Maximum size allowed is 5MB.'}), 413
 
-# Endpoint to handle file upload and OCR processing
-@app.route('/upload', methods=['POST'])
-def upload_file():
-    if 'file' not in request.files:
-        app.logger.error('No file part in the request')
-        return jsonify({'error': 'No file provided'}), 400
+# Batch upload route for processing multiple images
+@app.route('/batch_upload', methods=['POST'])
+def batch_upload():
+    if 'files' not in request.files:
+        app.logger.error('No files provided in the request')
+        return jsonify({'error': 'No files provided'}), 400
 
-    file = request.files['file']
-    if file.filename == '':
-        app.logger.error('No file selected for uploading')
-        return jsonify({'error': 'No file selected'}), 400
+    files = request.files.getlist('files')
+    results = []
 
-    # Validate file type
-    if not file.filename.lower().endswith(('.png', '.jpg', '.jpeg')):
-        app.logger.error(f'Invalid file type uploaded: {file.filename}')
-        return jsonify({'error': 'Invalid file type. Only PNG, JPG, and JPEG are allowed.'}), 400
+    for file in files:
+        try:
+            # Validate file type
+            if not file.filename.lower().endswith(('.png', '.jpg', '.jpeg')):
+                app.logger.error(f'Invalid file type for file {file.filename}')
+                results.append(f'Invalid file type for {file.filename}. Only PNG, JPG, and JPEG are allowed.')
+                continue
 
-    try:
-        # Convert the file to an image
-        image = Image.open(file.stream)
+            # Convert the file to an image for processing
+            image = Image.open(file.stream)
+            open_cv_image = np.array(image.convert('RGB'))  # Convert to OpenCV format
+            open_cv_image = cv2.cvtColor(open_cv_image, cv2.COLOR_RGB2BGR)
 
-        # Convert PIL image to OpenCV format
-        open_cv_image = np.array(image.convert('RGB')) 
-        open_cv_image = cv2.cvtColor(open_cv_image, cv2.COLOR_RGB2BGR)
+            # Preprocess the image (grayscale, denoise, and threshold)
+            gray_image = cv2.cvtColor(open_cv_image, cv2.COLOR_BGR2GRAY)
+            denoised_image = cv2.GaussianBlur(gray_image, (5, 5), 0)
+            _, thresholded_image = cv2.threshold(denoised_image, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
 
-        # Preprocess the image (grayscale, denoise, and threshold)
-        gray_image = cv2.cvtColor(open_cv_image, cv2.COLOR_BGR2GRAY)
+            # Perform OCR on the preprocessed image
+            ocr_text = pytesseract.image_to_string(thresholded_image)
 
-        # Apply Gaussian Blur to reduce noise
-        denoised_image = cv2.GaussianBlur(gray_image, (5, 5), 0)
+            # Log the processed file
+            app.logger.info(f'Processed file: {file.filename}, extracted text: {ocr_text[:50]}...')
+            results.append(ocr_text)
 
-        # Apply Otsu's thresholding to improve text contrast
-        _, thresholded_image = cv2.threshold(denoised_image, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+        except Exception as e:
+            app.logger.error(f"Error processing file {file.filename}: {str(e)}")
+            results.append(f"Error processing file {file.filename}: {str(e)}")
 
-        # Perform OCR with support for multiple languages
-        ocr_text = pytesseract.image_to_string(thresholded_image, lang=languages)
-
-        # Log the processed file and result
-        app.logger.info(f'Processed file: {file.filename}, extracted text: {ocr_text[:50]}...')
-
-        return jsonify({'extracted_text': ocr_text})
-    
-    except Exception as e:
-        # Log the error and return an error message
-        app.logger.error(f"Error processing file: {e}")
-        return jsonify({'error': str(e)}), 500
+    return jsonify({'results': results})
 
 if __name__ == '__main__':
+    app.config['MAX_CONTENT_LENGTH'] = 5 * 1024 * 1024  # Set max file size to 5MB
     app.run(debug=True)

@@ -4,29 +4,139 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OCR Image Upload</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #loading {
+            font-style: italic;
+            color: #555;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+        #error {
+            color: red;
+        }
+        /* Drag and Drop Zone */
+        .drop-zone {
+            border: 2px dashed #4CAF50;
+            padding: 30px;
+            text-align: center;
+            color: #888;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        .drop-zone.dragover {
+            background-color: #f0f0f0;
+        }
+        /* Progress Bar */
+        #progress-bar-container {
+            width: 100%;
+            background-color: #ddd;
+            margin-top: 10px;
+        }
+        #progress-bar {
+            width: 0;
+            height: 20px;
+            background-color: #4CAF50;
+        }
+    </style>
     <script>
-        // JavaScript function to handle form submission
+        let selectedFile;
+
+        // Handle drag and drop functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const dropZone = document.getElementById('drop-zone');
+            const fileInput = document.querySelector('input[type="file"]');
+
+            // When a file is dragged over the drop zone
+            dropZone.addEventListener('dragover', function (e) {
+                e.preventDefault();
+                dropZone.classList.add('dragover');
+            });
+
+            // When the file is dropped in the drop zone
+            dropZone.addEventListener('dragleave', function () {
+                dropZone.classList.remove('dragover');
+            });
+
+            dropZone.addEventListener('drop', function (e) {
+                e.preventDefault();
+                dropZone.classList.remove('dragover');
+                selectedFile = e.dataTransfer.files[0];
+                fileInput.files = e.dataTransfer.files;
+                document.getElementById('file-label').textContent = selectedFile.name;
+            });
+
+            // Trigger file input when drop zone is clicked
+            dropZone.addEventListener('click', function () {
+                fileInput.click();  // Trigger the click event on the hidden file input
+            });
+
+            fileInput.addEventListener('change', function () {
+                selectedFile = fileInput.files[0];
+                document.getElementById('file-label').textContent = selectedFile.name;
+            });
+        });
+
+        // JavaScript function to handle form submission with progress bar and download option
         async function uploadImage(event) {
             event.preventDefault();
 
-            const formData = new FormData(event.target);
+            const formData = new FormData();
             const fileInput = document.querySelector('input[type="file"]');
             const loading = document.getElementById('loading');
             const result = document.getElementById('result');
             const error = document.getElementById('error');
+            const progressBar = document.getElementById('progress-bar');
 
-            // Reset previous results and errors
+            // Reset previous results, errors, and progress bar
             result.innerHTML = '';
             error.innerHTML = '';
+            progressBar.style.width = '0%';
+
+            // Validate if a file is selected
+            if (!selectedFile) {
+                error.innerHTML = 'Please select or drop a file to upload.';
+                return;
+            }
+
+            // Validate the file type before submission
+            if (!['image/png', 'image/jpeg'].includes(selectedFile.type)) {
+                error.innerHTML = 'Invalid file type. Only PNG and JPEG are allowed.';
+                return;
+            }
+
+            formData.append('file', selectedFile);
 
             // Show loading message
             loading.style.display = 'block';
 
             try {
-                // Send the form data using Fetch API
                 const response = await fetch('/upload', {
                     method: 'POST',
-                    body: formData
+                    body: formData,
                 });
 
                 // Parse the response as JSON
@@ -39,7 +149,16 @@
                 if (response.status !== 200) {
                     error.innerHTML = data.error;
                 } else {
-                    result.innerHTML = `<h3>Extracted Text:</h3><p>${data.extracted_text}</p>`;
+                    // Display the result with a download option
+                    result.innerHTML = `
+                        <h3>Extracted Text:</h3>
+                        <pre>${data.extracted_text}</pre>
+                        <button id="downloadBtn">Download Text</button>
+                    `;
+                    // Attach the download event after rendering the button
+                    document.getElementById('downloadBtn').addEventListener('click', function() {
+                        downloadText(data.extracted_text);
+                    });
                 }
             } catch (err) {
                 // Hide loading message
@@ -47,16 +166,36 @@
                 error.innerHTML = 'An error occurred while processing the image. Please try again.';
             }
         }
+
+        // Function to download the extracted text as a .txt file
+        function downloadText(text) {
+            const blob = new Blob([text], { type: 'text/plain' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'extracted_text.txt';
+            link.click();
+        }
     </script>
 </head>
 <body>
     <h1>Upload an Image for OCR Processing</h1>
-    
-    <!-- Form to upload file -->
+
+    <!-- Drag and Drop Zone -->
+    <div id="drop-zone" class="drop-zone">
+        Drag & Drop an image file here or click to upload.
+    </div>
+
+    <!-- File input (hidden) -->
     <form onsubmit="uploadImage(event)" enctype="multipart/form-data">
-        <input type="file" name="file" accept="image/png, image/jpeg" required>
+        <input type="file" name="file" accept="image/png, image/jpeg" required hidden>
+        <span id="file-label">No file selected</span>
         <button type="submit">Upload</button>
     </form>
+
+    <!-- Progress Bar -->
+    <div id="progress-bar-container">
+        <div id="progress-bar"></div>
+    </div>
 
     <!-- Loading indicator -->
     <p id="loading" style="display:none;">Processing image... Please wait.</p>
@@ -65,7 +204,7 @@
     <div id="result"></div>
 
     <!-- Div to display errors -->
-    <div id="error" style="color: red;"></div>
+    <div id="error"></div>
 
 </body>
 </html>

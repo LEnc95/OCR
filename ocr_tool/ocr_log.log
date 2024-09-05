@@ -106,3 +106,100 @@ INFO:app:Processed file: Sex2.png, extracted text: Video calls and meetings for
 everyone
 ...
 INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:50:10] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 177-266-338
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:53:25] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:53:33] "[31m[1mPOST /upload HTTP/1.1[0m" 413 -
+INFO:app:Processed file: spaLangtest.png, extracted text: ...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:53:41] "POST /upload HTTP/1.1" 200 -
+INFO:app:Processed file: Sex2.png, extracted text: Video calls and meetings for
+everyone
+...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:53:48] "POST /upload HTTP/1.1" 200 -
+INFO:app:Processed file: derp.png, extracted text: ...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:54:08] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 177-266-338
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:56:21] "GET / HTTP/1.1" 200 -
+INFO:app:Processed file: hindiLangtest.png, extracted text: \u0906\u092a\u0915\u093e \u092a\u0938\u0902\u0926\u0940\u0926\u093e \u092b\u0932 \u0915\u092f\u093e \u0939\u0948
+...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:56:51] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:57:03] "[31m[1mPOST /upload HTTP/1.1[0m" 413 -
+INFO:app:Processed file: Screenshotex1.png, extracted text: Overview
+
+Giant Eagle strives to be a best place t...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:57:08] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 177-266-338
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:59:39] "GET / HTTP/1.1" 200 -
+INFO:app:Processed file: hindiLangtest.png, extracted text: \u0906\u092a\u0915\u093e \u092a\u0938\u0902\u0926\u0940\u0926\u093e \u092b\u0932 \u0915\u092f\u093e \u0939\u0948
+...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:59:46] "POST /upload HTTP/1.1" 200 -
+INFO:app:Processed file: hindiLangtest.png, extracted text: \u0906\u092a\u0915\u093e \u092a\u0938\u0902\u0926\u0940\u0926\u093e \u092b\u0932 \u0915\u092f\u093e \u0939\u0948
+...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:59:52] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:59:56] "[31m[1mPOST /upload HTTP/1.1[0m" 413 -
+INFO:app:Processed file: Sex2.png, extracted text: Video calls and meetings for
+everyone
+...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:00:04] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 177-266-338
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:02:06] "GET / HTTP/1.1" 200 -
+INFO:app:Processed file: Screenshotex1.png, extracted text: Overview
+
+Giant Eagle strives to be a best place t...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:02:12] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 177-266-338
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:04:03] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:04:05] "GET / HTTP/1.1" 200 -
+INFO:app:Processed file: Screenshotex1.png, extracted text: Overview
+
+Giant Eagle strives to be a best place t...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:04:11] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 177-266-338
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:06:00] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:06:01] "GET / HTTP/1.1" 200 -
+INFO:app:Processed file: Screenshotex1.png, extracted text: Overview
+
+Giant Eagle strives to be a best place t...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:06:07] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 177-266-338
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:08:07] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:08:08] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:08:08] "GET / HTTP/1.1" 200 -
+INFO:app:Processed file: Screenshotex1.png, extracted text: Overview
+
+Giant Eagle strives to be a best place t...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:08:17] "POST /upload HTTP/1.1" 200 -

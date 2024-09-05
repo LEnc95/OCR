@@ -299,3 +299,207 @@ everyone
 INFO:app:Processed file: spaLangtest.png, extracted text: [-ootrmt cre
 ...
 INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:35:20] "POST /batch_upload HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 177-266-338
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:38:35] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:38:36] "GET / HTTP/1.1" 200 -
+INFO:app:Processed file: Screenshotex1.png, extracted text: Overview
+
+Giant Eagle strives to be a best place t...
+INFO:app:Processed file: Sex2.png, extracted text: Video calls and meetings for
+everyone
+...
+INFO:app:Processed file: spaLangtest.png, extracted text: [-ootrmt cre
+...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:38:43] "POST /batch_upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:39:09] "GET / HTTP/1.1" 200 -
+INFO:app:Processed file: Screenshotex1.png, extracted text: Overview
+
+Giant Eagle strives to be a best place t...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:39:14] "POST /batch_upload HTTP/1.1" 200 -
+INFO:app:Processed file: Sex2.png, extracted text: Video calls and meetings for
+everyone
+...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:39:22] "POST /batch_upload HTTP/1.1" 200 -
+INFO:app:Processed file: Sex2.png, extracted text: Video calls and meetings for
+everyone
+...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:39:25] "POST /batch_upload HTTP/1.1" 200 -
+INFO:app:Processed file: Screenshotex1.png, extracted text: Overview
+
+Giant Eagle strives to be a best place t...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:39:50] "POST /batch_upload HTTP/1.1" 200 -
+INFO:app:Processed file: Screenshotex1.png, extracted text: Overview
+
+Giant Eagle strives to be a best place t...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:39:58] "POST /batch_upload HTTP/1.1" 200 -
+INFO:app:Processed file: hindiLangtest.png, extracted text: WEA ELT HS
+...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:40:03] "POST /batch_upload HTTP/1.1" 200 -
+INFO:app:Processed file: hindiLangtest.png, extracted text: WEA ELT HS
+...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:40:06] "POST /batch_upload HTTP/1.1" 200 -
+INFO:app:Processed file: Screenshotex1.png, extracted text: Overview
+
+Giant Eagle strives to be a best place t...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:40:21] "POST /batch_upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:40:33] "[31m[1mPOST /batch_upload HTTP/1.1[0m" 413 -
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:40:34] "[31m[1mPOST /batch_upload HTTP/1.1[0m" 413 -
+INFO:app:Processed file: hindiLangtest.png, extracted text: WEA ELT HS
+...
+INFO:app:Processed file: Screenshotex1.png, extracted text: Overview
+
+Giant Eagle strives to be a best place t...
+INFO:app:Processed file: Sex2.png, extracted text: Video calls and meetings for
+everyone
+...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:40:43] "POST /batch_upload HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 177-266-338
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:43:20] "GET / HTTP/1.1" 200 -
+INFO:app:Processed file: Screenshotex1.png, extracted text: Overview
+
+Giant Eagle strives to be a best place t...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:43:25] "POST /batch_upload HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 177-266-338
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:46:37] "GET / HTTP/1.1" 200 -
+INFO:app:Processed file: Screenshotex1.png, extracted text: Overview
+
+Giant Eagle strives to be a best place t...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:46:42] "POST /batch_upload HTTP/1.1" 200 -
+INFO:app:Processed file: Screenshotex1.png, extracted text: Overview
+
+Giant Eagle strives to be a best place t...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:46:50] "POST /batch_upload HTTP/1.1" 200 -
+INFO:app:Processed file: Sex2.png, extracted text: Video calls and meetings for
+everyone
+...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:46:56] "POST /batch_upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:47:08] "[31m[1mPOST /batch_upload HTTP/1.1[0m" 413 -
+INFO:app:Processed file: hindiLangtest.png, extracted text: WEA ELT HS
+...
+INFO:app:Processed file: Sex2.png, extracted text: Video calls and meetings for
+everyone
+...
+INFO:app:Processed file: spaLangtest.png, extracted text: [-ootrmt cre
+...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:47:21] "POST /batch_upload HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 177-266-338
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:49:13] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:49:14] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:49:14] "GET / HTTP/1.1" 200 -
+INFO:app:Processed file: Screenshotex1.png, extracted text: Overview
+
+Giant Eagle strives to be a best place t...
+INFO:app:Processed file: Sex2.png, extracted text: Video calls and meetings for
+everyone
+...
+INFO:app:Processed file: spaLangtest.png, extracted text: [-ootrmt cre
+...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:49:21] "POST /batch_upload HTTP/1.1" 200 -
+INFO:app:Processed file: Screenshotex1.png, extracted text: Overview
+
+Giant Eagle strives to be a best place t...
+INFO:app:Processed file: Sex2.png, extracted text: Video calls and meetings for
+everyone
+...
+INFO:app:Processed file: spaLangtest.png, extracted text: [-ootrmt cre
+...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:49:26] "POST /batch_upload HTTP/1.1" 200 -
+INFO:app:Processed file: Screenshotex1.png, extracted text: Overview
+
+Giant Eagle strives to be a best place t...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:49:34] "POST /batch_upload HTTP/1.1" 200 -
+INFO:app:Processed file: Screenshotex1.png, extracted text: Overview
+
+Giant Eagle strives to be a best place t...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:49:37] "POST /batch_upload HTTP/1.1" 200 -
+INFO:app:Processed file: Screenshotex1.png, extracted text: Overview
+
+Giant Eagle strives to be a best place t...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:49:39] "POST /batch_upload HTTP/1.1" 200 -
+INFO:app:Processed file: Sex2.png, extracted text: Video calls and meetings for
+everyone
+...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:49:44] "POST /batch_upload HTTP/1.1" 200 -
+INFO:app:Processed file: spaLangtest.png, extracted text: [-ootrmt cre
+...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:49:58] "POST /batch_upload HTTP/1.1" 200 -
+INFO:app:Processed file: Screenshotex1.png, extracted text: Overview
+
+Giant Eagle strives to be a best place t...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:50:08] "POST /batch_upload HTTP/1.1" 200 -
+INFO:app:Processed file: Screenshotex1.png, extracted text: Overview
+
+Giant Eagle strives to be a best place t...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:50:22] "POST /batch_upload HTTP/1.1" 200 -
+INFO:app:Processed file: Screenshotex1.png, extracted text: Overview
+
+Giant Eagle strives to be a best place t...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:50:23] "POST /batch_upload HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\Luke\\Documents\\GitHub\\OCR\\ocr_tool\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 177-266-338
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 177-266-338
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:57:22] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:57:23] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:57:28] "[33mPOST /batch_upload HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:57:29] "[33mPOST /batch_upload HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:57:33] "[33mPOST /batch_upload HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:57:34] "[33mPOST /batch_upload HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:57:34] "[33mPOST /batch_upload HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:57:39] "[33mPOST /batch_upload HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 23:57:39] "[33mPOST /batch_upload HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\Luke\\Documents\\GitHub\\OCR\\ocr_tool\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 177-266-338
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 177-266-338
+INFO:werkzeug:127.0.0.1 - - [05/Sep/2024 00:02:43] "[33mGET / HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Sep/2024 00:02:45] "[33mGET / HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\Luke\\Documents\\GitHub\\OCR\\ocr_tool\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 177-266-338
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 177-266-338
+INFO:werkzeug:127.0.0.1 - - [05/Sep/2024 00:03:20] "[33mGET / HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Sep/2024 00:03:24] "[33mGET / HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Sep/2024 00:03:25] "[33mGET / HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Sep/2024 00:03:25] "[33mGET / HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Sep/2024 00:03:26] "[33mGET / HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\Luke\\Documents\\GitHub\\OCR\\ocr_tool\\app.py', reloading
+INFO:werkzeug: * Restarting with stat

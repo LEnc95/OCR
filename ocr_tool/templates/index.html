@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OCR Image Upload (Batch Processing)</title>
+    <title>OCR Image Upload (Single Processing with Preview and Clipboard Copy)</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -50,36 +50,24 @@
         .drop-zone.dragover {
             background-color: #f0f0f0;
         }
-        /* Progress Bar */
-        #progress-bar-container {
-            width: 100%;
-            background-color: #ddd;
-            margin-top: 10px;
-        }
-        #progress-bar {
-            width: 0;
-            height: 20px;
-            background-color: #4CAF50;
-        }
-        #image-previews {
-            display: flex;
-            flex-wrap: wrap;
+        /* Image preview styling */
+        #image-preview {
+            display: none;
+            max-width: 300px;
             margin-top: 20px;
-        }
-        .image-preview {
-            margin-right: 10px;
-            max-width: 150px;
-            max-height: 150px;
+            border: 1px solid #ddd;
         }
     </style>
     <script>
-        let selectedFiles = [];
+        let selectedFile;
+        const MAX_FILE_SIZE = 5 * 1024 * 1024;  // 5MB limit
 
         // Handle drag and drop functionality
         document.addEventListener('DOMContentLoaded', function () {
             const dropZone = document.getElementById('drop-zone');
             const fileInput = document.querySelector('input[type="file"]');
-            const imagePreviews = document.getElementById('image-previews');
+            const error = document.getElementById('error');
+            const imagePreview = document.getElementById('image-preview');
 
             // When a file is dragged over the drop zone
             dropZone.addEventListener('dragover', function (e) {
@@ -95,10 +83,20 @@
             dropZone.addEventListener('drop', function (e) {
                 e.preventDefault();
                 dropZone.classList.remove('dragover');
-                selectedFiles = Array.from(e.dataTransfer.files); // Convert to array
+                selectedFile = e.dataTransfer.files[0];
                 fileInput.files = e.dataTransfer.files;
-                displayImagePreviews(selectedFiles);
-                document.getElementById('file-label').textContent = `${selectedFiles.length} files selected`;
+                document.getElementById('file-label').textContent = selectedFile.name;
+
+                // Frontend file size validation
+                if (selectedFile.size > MAX_FILE_SIZE) {
+                    error.innerHTML = 'File is too large. Maximum size allowed is 5MB.';
+                    imagePreview.style.display = 'none';  // Hide the preview if validation fails
+                    return;
+                }
+                error.innerHTML = '';  // Clear any previous error
+
+                // Display image preview
+                previewImage(selectedFile);
             });
 
             // Trigger file input when drop zone is clicked
@@ -107,56 +105,65 @@
             });
 
             fileInput.addEventListener('change', function () {
-                selectedFiles = Array.from(fileInput.files); // Convert to array
-                displayImagePreviews(selectedFiles);
-                document.getElementById('file-label').textContent = `${selectedFiles.length} files selected`;
+                selectedFile = fileInput.files[0];
+                document.getElementById('file-label').textContent = selectedFile.name;
+
+                // Frontend file size validation
+                if (selectedFile.size > MAX_FILE_SIZE) {
+                    error.innerHTML = 'File is too large. Maximum size allowed is 5MB.';
+                    imagePreview.style.display = 'none';  // Hide the preview if validation fails
+                    return;
+                }
+                error.innerHTML = '';  // Clear any previous error
+
+                // Display image preview
+                previewImage(selectedFile);
             });
 
-            function displayImagePreviews(files) {
-                imagePreviews.innerHTML = ''; // Clear previous previews
-                files.forEach(file => {
-                    const reader = new FileReader();
-                    reader.onload = function (e) {
-                        const img = document.createElement('img');
-                        img.src = e.target.result;
-                        img.classList.add('image-preview');
-                        imagePreviews.appendChild(img);
-                    };
-                    reader.readAsDataURL(file);
-                });
+            // Function to preview the image
+            function previewImage(file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    imagePreview.src = e.target.result;  // Set the src of the img element to the file data
+                    imagePreview.style.display = 'block';  // Show the preview
+                };
+                reader.readAsDataURL(file);  // Read the file as a data URL
             }
         });
 
-        async function uploadImages(event) {
+        async function uploadImage(event) {
             event.preventDefault();
 
             const formData = new FormData();
             const loading = document.getElementById('loading');
             const result = document.getElementById('result');
             const error = document.getElementById('error');
-            const progressBar = document.getElementById('progress-bar');
 
-            // Reset previous results, errors, and progress bar
+            // Reset previous results and errors
             result.innerHTML = '';
             error.innerHTML = '';
-            progressBar.style.width = '0%';
 
-            if (selectedFiles.length === 0) {
-                error.innerHTML = 'Please select or drop files to upload.';
+            // Validate if a file is selected
+            if (!selectedFile) {
+                error.innerHTML = 'Please select or drop a file to upload.';
                 return;
             }
 
-            // Append each file to FormData
-            for (const file of selectedFiles) {
-                formData.append('files', file);
+            // Validate file size
+            if (selectedFile.size > MAX_FILE_SIZE) {
+                error.innerHTML = 'File is too large. Maximum size allowed is 5MB.';
+                return;
             }
 
+            formData.append('file', selectedFile);
+
+            // Show loading message
             loading.style.display = 'block';
 
             try {
-                const response = await fetch('/batch_upload', {
+                const response = await fetch('/upload', {
                     method: 'POST',
-                    body: formData,
+                    body: formData
                 });
 
                 const data = await response.json();
@@ -167,44 +174,64 @@
                 if (response.status !== 200) {
                     error.innerHTML = data.error;
                 } else {
-                    // Display the OCR results for each image
-                    result.innerHTML = '<h3>Extracted Texts:</h3>';
-                    data.results.forEach((text, index) => {
-                        result.innerHTML += `<p><strong>Image ${index + 1}:</strong></p><pre>${text}</pre>`;
-                    });
+                    // Display the result and store the extracted text in a hidden div
+                    result.innerHTML = `
+                        <h3>Extracted Text:</h3>
+                        <pre>${data.extracted_text}</pre>
+                        <button onclick="downloadText()">Download Text</button>
+                        <button onclick="copyToClipboard()">Copy to Clipboard</button>
+                        <div id="extracted-text" style="display:none;">${encodeURIComponent(data.extracted_text)}</div>
+                    `;
                 }
             } catch (err) {
                 loading.style.display = 'none';
-                error.innerHTML = 'An error occurred while processing the images. Please try again.';
+                error.innerHTML = 'An error occurred while processing the image. Please try again.';
             }
+        }
+
+        // Function to download the extracted text as a .txt file
+        function downloadText() {
+            const textElement = document.getElementById('extracted-text');
+            const decodedText = decodeURIComponent(textElement.textContent);  // Decode any encoded text
+            const blob = new Blob([decodedText], { type: 'text/plain' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'extracted_text.txt';
+            link.click();
+        }
+
+        // Function to copy the extracted text to the clipboard
+        function copyToClipboard() {
+            const textElement = document.getElementById('extracted-text');
+            const decodedText = decodeURIComponent(textElement.textContent);  // Decode the text
+            navigator.clipboard.writeText(decodedText).then(() => {
+                alert('Text copied to clipboard!');
+            }).catch(err => {
+                alert('Failed to copy text: ' + err);
+            });
         }
     </script>
 </head>
 <body>
-    <h1>Upload Images for OCR Processing (Batch Processing)</h1>
+    <h1>Upload an Image for OCR Processing (Single Image with Preview and Clipboard Copy)</h1>
 
     <!-- Drag and Drop Zone -->
     <div id="drop-zone" class="drop-zone">
-        Drag & Drop image files here or click to upload.
+        Drag & Drop an image file here or click to upload.
     </div>
 
     <!-- File input (hidden) -->
-    <form onsubmit="uploadImages(event)" enctype="multipart/form-data">
-        <input type="file" name="file" accept="image/png, image/jpeg" multiple required hidden>
-        <span id="file-label">No files selected</span>
+    <form onsubmit="uploadImage(event)" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/png, image/jpeg" required hidden>
+        <span id="file-label">No file selected</span>
         <button type="submit">Upload</button>
     </form>
 
-    <!-- Image Previews -->
-    <div id="image-previews"></div>
-
-    <!-- Progress Bar -->
-    <div id="progress-bar-container">
-        <div id="progress-bar"></div>
-    </div>
+    <!-- Image preview -->
+    <img id="image-preview" alt="Image Preview">
 
     <!-- Loading indicator -->
-    <p id="loading" style="display:none;">Processing images... Please wait.</p>
+    <p id="loading" style="display:none;">Processing image... Please wait.</p>
 
     <!-- Div to display results -->
     <div id="result"></div>

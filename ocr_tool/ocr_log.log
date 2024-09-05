@@ -503,3 +503,261 @@ INFO:werkzeug:127.0.0.1 - - [05/Sep/2024 00:03:25] "[33mGET / HTTP/1.1[0m" 404
 INFO:werkzeug:127.0.0.1 - - [05/Sep/2024 00:03:26] "[33mGET / HTTP/1.1[0m" 404 -
 INFO:werkzeug: * Detected change in 'C:\\Users\\Luke\\Documents\\GitHub\\OCR\\ocr_tool\\app.py', reloading
 INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 177-266-338
+INFO:werkzeug: * Detected change in 'C:\\Users\\Luke\\Documents\\GitHub\\OCR\\ocr_tool\\app.py', reloading
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 177-266-338
+INFO:werkzeug:127.0.0.1 - - [05/Sep/2024 00:28:03] "GET / HTTP/1.1" 200 -
+ERROR:app:Error processing file: (1, 'Error opening data file C:\\Program Files\\Tesseract-OCR/tessdata/eng,spa,hin,tam,pan.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'eng,spa,hin,tam,pan\' Tesseract couldn\'t load any languages! Could not initialize tesseract.')
+Traceback (most recent call last):
+  File "C:\Users\Luke\Documents\GitHub\OCR\ocr_tool\app.py", line 58, in upload_file
+    ocr_text = pytesseract.image_to_string(thresholded_image, lang=SUPPORTED_LANGUAGES)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Luke\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\pytesseract\pytesseract.py", line 486, in image_to_string
+    return {
+           ^
+  File "C:\Users\Luke\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\pytesseract\pytesseract.py", line 489, in <lambda>
+    Output.STRING: lambda: run_and_get_output(*args),
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Luke\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\pytesseract\pytesseract.py", line 352, in run_and_get_output
+    run_tesseract(**kwargs)
+  File "C:\Users\Luke\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\pytesseract\pytesseract.py", line 284, in run_tesseract
+    raise TesseractError(proc.returncode, get_errors(error_string))
+pytesseract.pytesseract.TesseractError: (1, 'Error opening data file C:\\Program Files\\Tesseract-OCR/tessdata/eng,spa,hin,tam,pan.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'eng,spa,hin,tam,pan\' Tesseract couldn\'t load any languages! Could not initialize tesseract.')
+INFO:werkzeug:127.0.0.1 - - [05/Sep/2024 00:28:12] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+ERROR:app:Error processing file: (1, 'Error opening data file C:\\Program Files\\Tesseract-OCR/tessdata/eng,spa,hin,tam,pan.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'eng,spa,hin,tam,pan\' Tesseract couldn\'t load any languages! Could not initialize tesseract.')
+Traceback (most recent call last):
+  File "C:\Users\Luke\Documents\GitHub\OCR\ocr_tool\app.py", line 58, in upload_file
+    ocr_text = pytesseract.image_to_string(thresholded_image, lang=SUPPORTED_LANGUAGES)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Luke\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\pytesseract\pytesseract.py", line 486, in image_to_string
+    return {
+           ^
+  File "C:\Users\Luke\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\pytesseract\pytesseract.py", line 489, in <lambda>
+    Output.STRING: lambda: run_and_get_output(*args),
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Luke\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\pytesseract\pytesseract.py", line 352, in run_and_get_output
+    run_tesseract(**kwargs)
+  File "C:\Users\Luke\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\pytesseract\pytesseract.py", line 284, in run_tesseract
+    raise TesseractError(proc.returncode, get_errors(error_string))
+pytesseract.pytesseract.TesseractError: (1, 'Error opening data file C:\\Program Files\\Tesseract-OCR/tessdata/eng,spa,hin,tam,pan.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'eng,spa,hin,tam,pan\' Tesseract couldn\'t load any languages! Could not initialize tesseract.')
+INFO:werkzeug:127.0.0.1 - - [05/Sep/2024 00:29:47] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\Luke\\Documents\\GitHub\\OCR\\ocr_tool\\app.py', reloading
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 177-266-338
+INFO:werkzeug:127.0.0.1 - - [05/Sep/2024 00:30:13] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Sep/2024 00:30:14] "GET / HTTP/1.1" 200 -
+ERROR:app:Error processing file: (1, 'Error opening data file C:\\Program Files\\Tesseract-OCR\\\\eng.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'eng\' Error opening data file C:\\Program Files\\Tesseract-OCR\\\\spa.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'spa\' Error opening data file C:\\Program Files\\Tesseract-OCR\\\\hin.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'hin\' Error opening data file C:\\Program Files\\Tesseract-OCR\\\\tam.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'tam\' Error opening data file C:\\Program Files\\Tesseract-OCR\\\\pan.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'pan\' Tesseract couldn\'t load any languages! Could not initialize tesseract.')
+Traceback (most recent call last):
+  File "C:\Users\Luke\Documents\GitHub\OCR\ocr_tool\app.py", line 63, in upload_file
+    ocr_text = pytesseract.image_to_string(thresholded_image, lang=SUPPORTED_LANGUAGES)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Luke\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\pytesseract\pytesseract.py", line 486, in image_to_string
+    return {
+           ^
+  File "C:\Users\Luke\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\pytesseract\pytesseract.py", line 489, in <lambda>
+    Output.STRING: lambda: run_and_get_output(*args),
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Luke\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\pytesseract\pytesseract.py", line 352, in run_and_get_output
+    run_tesseract(**kwargs)
+  File "C:\Users\Luke\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\pytesseract\pytesseract.py", line 284, in run_tesseract
+    raise TesseractError(proc.returncode, get_errors(error_string))
+pytesseract.pytesseract.TesseractError: (1, 'Error opening data file C:\\Program Files\\Tesseract-OCR\\\\eng.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'eng\' Error opening data file C:\\Program Files\\Tesseract-OCR\\\\spa.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'spa\' Error opening data file C:\\Program Files\\Tesseract-OCR\\\\hin.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'hin\' Error opening data file C:\\Program Files\\Tesseract-OCR\\\\tam.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'tam\' Error opening data file C:\\Program Files\\Tesseract-OCR\\\\pan.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'pan\' Tesseract couldn\'t load any languages! Could not initialize tesseract.')
+INFO:werkzeug:127.0.0.1 - - [05/Sep/2024 00:30:21] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\Luke\\Documents\\GitHub\\OCR\\ocr_tool\\app.py', reloading
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 177-266-338
+ERROR:app:Error processing file: (1, 'Error opening data file C:\\Program Files\\Tesseract-OCR\\\\eng.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'eng\' Error opening data file C:\\Program Files\\Tesseract-OCR\\\\hin.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'hin\' Error opening data file C:\\Program Files\\Tesseract-OCR\\\\tam.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'tam\' Error opening data file C:\\Program Files\\Tesseract-OCR\\\\pan.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'pan\' Tesseract couldn\'t load any languages! Could not initialize tesseract.')
+Traceback (most recent call last):
+  File "C:\Users\Luke\Documents\GitHub\OCR\ocr_tool\app.py", line 63, in upload_file
+    ocr_text = pytesseract.image_to_string(thresholded_image, lang=SUPPORTED_LANGUAGES)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Luke\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\pytesseract\pytesseract.py", line 486, in image_to_string
+    return {
+           ^
+  File "C:\Users\Luke\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\pytesseract\pytesseract.py", line 489, in <lambda>
+    Output.STRING: lambda: run_and_get_output(*args),
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Luke\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\pytesseract\pytesseract.py", line 352, in run_and_get_output
+    run_tesseract(**kwargs)
+  File "C:\Users\Luke\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\pytesseract\pytesseract.py", line 284, in run_tesseract
+    raise TesseractError(proc.returncode, get_errors(error_string))
+pytesseract.pytesseract.TesseractError: (1, 'Error opening data file C:\\Program Files\\Tesseract-OCR\\\\eng.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'eng\' Error opening data file C:\\Program Files\\Tesseract-OCR\\\\hin.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'hin\' Error opening data file C:\\Program Files\\Tesseract-OCR\\\\tam.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'tam\' Error opening data file C:\\Program Files\\Tesseract-OCR\\\\pan.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'pan\' Tesseract couldn\'t load any languages! Could not initialize tesseract.')
+INFO:werkzeug:127.0.0.1 - - [05/Sep/2024 00:32:27] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+ERROR:app:Error processing file: (1, 'Error opening data file C:\\Program Files\\Tesseract-OCR\\\\eng.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'eng\' Error opening data file C:\\Program Files\\Tesseract-OCR\\\\hin.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'hin\' Error opening data file C:\\Program Files\\Tesseract-OCR\\\\tam.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'tam\' Error opening data file C:\\Program Files\\Tesseract-OCR\\\\pan.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'pan\' Tesseract couldn\'t load any languages! Could not initialize tesseract.')
+Traceback (most recent call last):
+  File "C:\Users\Luke\Documents\GitHub\OCR\ocr_tool\app.py", line 63, in upload_file
+    ocr_text = pytesseract.image_to_string(thresholded_image, lang=SUPPORTED_LANGUAGES)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Luke\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\pytesseract\pytesseract.py", line 486, in image_to_string
+    return {
+           ^
+  File "C:\Users\Luke\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\pytesseract\pytesseract.py", line 489, in <lambda>
+    Output.STRING: lambda: run_and_get_output(*args),
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Luke\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\pytesseract\pytesseract.py", line 352, in run_and_get_output
+    run_tesseract(**kwargs)
+  File "C:\Users\Luke\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\pytesseract\pytesseract.py", line 284, in run_tesseract
+    raise TesseractError(proc.returncode, get_errors(error_string))
+pytesseract.pytesseract.TesseractError: (1, 'Error opening data file C:\\Program Files\\Tesseract-OCR\\\\eng.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'eng\' Error opening data file C:\\Program Files\\Tesseract-OCR\\\\hin.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'hin\' Error opening data file C:\\Program Files\\Tesseract-OCR\\\\tam.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'tam\' Error opening data file C:\\Program Files\\Tesseract-OCR\\\\pan.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'pan\' Tesseract couldn\'t load any languages! Could not initialize tesseract.')
+INFO:werkzeug:127.0.0.1 - - [05/Sep/2024 00:32:28] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [05/Sep/2024 00:32:32] "GET / HTTP/1.1" 200 -
+ERROR:app:Error processing file: (1, 'Error opening data file C:\\Program Files\\Tesseract-OCR\\\\eng.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'eng\' Error opening data file C:\\Program Files\\Tesseract-OCR\\\\hin.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'hin\' Error opening data file C:\\Program Files\\Tesseract-OCR\\\\tam.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'tam\' Error opening data file C:\\Program Files\\Tesseract-OCR\\\\pan.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'pan\' Tesseract couldn\'t load any languages! Could not initialize tesseract.')
+Traceback (most recent call last):
+  File "C:\Users\Luke\Documents\GitHub\OCR\ocr_tool\app.py", line 63, in upload_file
+    ocr_text = pytesseract.image_to_string(thresholded_image, lang=SUPPORTED_LANGUAGES)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Luke\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\pytesseract\pytesseract.py", line 486, in image_to_string
+    return {
+           ^
+  File "C:\Users\Luke\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\pytesseract\pytesseract.py", line 489, in <lambda>
+    Output.STRING: lambda: run_and_get_output(*args),
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Luke\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\pytesseract\pytesseract.py", line 352, in run_and_get_output
+    run_tesseract(**kwargs)
+  File "C:\Users\Luke\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\pytesseract\pytesseract.py", line 284, in run_tesseract
+    raise TesseractError(proc.returncode, get_errors(error_string))
+pytesseract.pytesseract.TesseractError: (1, 'Error opening data file C:\\Program Files\\Tesseract-OCR\\\\eng.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'eng\' Error opening data file C:\\Program Files\\Tesseract-OCR\\\\hin.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'hin\' Error opening data file C:\\Program Files\\Tesseract-OCR\\\\tam.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'tam\' Error opening data file C:\\Program Files\\Tesseract-OCR\\\\pan.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'pan\' Tesseract couldn\'t load any languages! Could not initialize tesseract.')
+INFO:werkzeug:127.0.0.1 - - [05/Sep/2024 00:32:37] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\Luke\\Documents\\GitHub\\OCR\\ocr_tool\\app.py', reloading
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 177-266-338
+INFO:werkzeug:127.0.0.1 - - [05/Sep/2024 00:33:44] "GET / HTTP/1.1" 200 -
+ERROR:app:Error processing file: (1, 'Error opening data file C:\\Program Files\\Tesseract-OCR\\\\eng.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'eng\' Error opening data file C:\\Program Files\\Tesseract-OCR\\\\hin.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'hin\' Error opening data file C:\\Program Files\\Tesseract-OCR\\\\tam.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'tam\' Error opening data file C:\\Program Files\\Tesseract-OCR\\\\pan.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'pan\' Tesseract couldn\'t load any languages! Could not initialize tesseract.')
+Traceback (most recent call last):
+  File "C:\Users\Luke\Documents\GitHub\OCR\ocr_tool\app.py", line 62, in upload_file
+    ocr_text = pytesseract.image_to_string(thresholded_image, lang=SUPPORTED_LANGUAGES)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Luke\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\pytesseract\pytesseract.py", line 486, in image_to_string
+    return {
+           ^
+  File "C:\Users\Luke\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\pytesseract\pytesseract.py", line 489, in <lambda>
+    Output.STRING: lambda: run_and_get_output(*args),
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Luke\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\pytesseract\pytesseract.py", line 352, in run_and_get_output
+    run_tesseract(**kwargs)
+  File "C:\Users\Luke\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\pytesseract\pytesseract.py", line 284, in run_tesseract
+    raise TesseractError(proc.returncode, get_errors(error_string))
+pytesseract.pytesseract.TesseractError: (1, 'Error opening data file C:\\Program Files\\Tesseract-OCR\\\\eng.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'eng\' Error opening data file C:\\Program Files\\Tesseract-OCR\\\\hin.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'hin\' Error opening data file C:\\Program Files\\Tesseract-OCR\\\\tam.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'tam\' Error opening data file C:\\Program Files\\Tesseract-OCR\\\\pan.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'pan\' Tesseract couldn\'t load any languages! Could not initialize tesseract.')
+INFO:werkzeug:127.0.0.1 - - [05/Sep/2024 00:33:49] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+ERROR:app:Error processing file: (1, 'Error opening data file C:\\Program Files\\Tesseract-OCR\\\\eng.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'eng\' Error opening data file C:\\Program Files\\Tesseract-OCR\\\\hin.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'hin\' Error opening data file C:\\Program Files\\Tesseract-OCR\\\\tam.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'tam\' Error opening data file C:\\Program Files\\Tesseract-OCR\\\\pan.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'pan\' Tesseract couldn\'t load any languages! Could not initialize tesseract.')
+Traceback (most recent call last):
+  File "C:\Users\Luke\Documents\GitHub\OCR\ocr_tool\app.py", line 62, in upload_file
+    ocr_text = pytesseract.image_to_string(thresholded_image, lang=SUPPORTED_LANGUAGES)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Luke\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\pytesseract\pytesseract.py", line 486, in image_to_string
+    return {
+           ^
+  File "C:\Users\Luke\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\pytesseract\pytesseract.py", line 489, in <lambda>
+    Output.STRING: lambda: run_and_get_output(*args),
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Luke\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\pytesseract\pytesseract.py", line 352, in run_and_get_output
+    run_tesseract(**kwargs)
+  File "C:\Users\Luke\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\pytesseract\pytesseract.py", line 284, in run_tesseract
+    raise TesseractError(proc.returncode, get_errors(error_string))
+pytesseract.pytesseract.TesseractError: (1, 'Error opening data file C:\\Program Files\\Tesseract-OCR\\\\eng.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'eng\' Error opening data file C:\\Program Files\\Tesseract-OCR\\\\hin.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'hin\' Error opening data file C:\\Program Files\\Tesseract-OCR\\\\tam.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'tam\' Error opening data file C:\\Program Files\\Tesseract-OCR\\\\pan.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'pan\' Tesseract couldn\'t load any languages! Could not initialize tesseract.')
+INFO:werkzeug:127.0.0.1 - - [05/Sep/2024 00:33:53] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\Luke\\Documents\\GitHub\\OCR\\ocr_tool\\app.py', reloading
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 177-266-338
+INFO:werkzeug:127.0.0.1 - - [05/Sep/2024 00:35:10] "GET / HTTP/1.1" 200 -
+ERROR:app:Error processing file: (1, 'Error opening data file C:\\Program Files\\Tesseract-OCR\\\\eng.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'eng\' Tesseract couldn\'t load any languages! Could not initialize tesseract.')
+Traceback (most recent call last):
+  File "C:\Users\Luke\Documents\GitHub\OCR\ocr_tool\app.py", line 62, in upload_file
+    ocr_text = pytesseract.image_to_string(thresholded_image, lang=SUPPORTED_LANGUAGE)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Luke\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\pytesseract\pytesseract.py", line 486, in image_to_string
+    return {
+           ^
+  File "C:\Users\Luke\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\pytesseract\pytesseract.py", line 489, in <lambda>
+    Output.STRING: lambda: run_and_get_output(*args),
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Luke\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\pytesseract\pytesseract.py", line 352, in run_and_get_output
+    run_tesseract(**kwargs)
+  File "C:\Users\Luke\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\pytesseract\pytesseract.py", line 284, in run_tesseract
+    raise TesseractError(proc.returncode, get_errors(error_string))
+pytesseract.pytesseract.TesseractError: (1, 'Error opening data file C:\\Program Files\\Tesseract-OCR\\\\eng.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'eng\' Tesseract couldn\'t load any languages! Could not initialize tesseract.')
+INFO:werkzeug:127.0.0.1 - - [05/Sep/2024 00:35:14] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [05/Sep/2024 00:37:41] "GET / HTTP/1.1" 200 -
+ERROR:app:Error processing file: (1, 'Error opening data file C:\\Program Files\\Tesseract-OCR\\\\eng.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'eng\' Tesseract couldn\'t load any languages! Could not initialize tesseract.')
+Traceback (most recent call last):
+  File "C:\Users\Luke\Documents\GitHub\OCR\ocr_tool\app.py", line 62, in upload_file
+    ocr_text = pytesseract.image_to_string(thresholded_image, lang=SUPPORTED_LANGUAGE)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Luke\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\pytesseract\pytesseract.py", line 486, in image_to_string
+    return {
+           ^
+  File "C:\Users\Luke\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\pytesseract\pytesseract.py", line 489, in <lambda>
+    Output.STRING: lambda: run_and_get_output(*args),
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Luke\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\pytesseract\pytesseract.py", line 352, in run_and_get_output
+    run_tesseract(**kwargs)
+  File "C:\Users\Luke\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\pytesseract\pytesseract.py", line 284, in run_tesseract
+    raise TesseractError(proc.returncode, get_errors(error_string))
+pytesseract.pytesseract.TesseractError: (1, 'Error opening data file C:\\Program Files\\Tesseract-OCR\\\\eng.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your "tessdata" directory. Failed loading language \'eng\' Tesseract couldn\'t load any languages! Could not initialize tesseract.')
+INFO:werkzeug:127.0.0.1 - - [05/Sep/2024 00:37:46] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\Luke\\Documents\\GitHub\\OCR\\ocr_tool\\app.py', reloading
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 177-266-338
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 177-266-338
+INFO:werkzeug:127.0.0.1 - - [05/Sep/2024 15:03:21] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Sep/2024 15:03:22] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Sep/2024 15:03:46] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Sep/2024 15:08:32] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\Luke\\Documents\\GitHub\\OCR\\ocr_tool\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in 'C:\\Users\\Luke\\Documents\\GitHub\\OCR\\ocr_tool\\app.py', reloading
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 177-266-338
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 177-266-338
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 177-266-338
+INFO:werkzeug:127.0.0.1 - - [05/Sep/2024 15:15:17] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Sep/2024 15:15:19] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Sep/2024 15:15:28] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Sep/2024 15:15:44] "POST /revise-text HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Sep/2024 15:15:47] "POST /revise-text HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Sep/2024 15:15:52] "POST /revise-text HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Sep/2024 15:16:01] "POST /revise-text HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\Luke\\Documents\\GitHub\\OCR\\ocr_tool\\app.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Luke\\Documents\\GitHub\\OCR\\ocr_tool\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 177-266-338
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 177-266-338
+INFO:werkzeug:127.0.0.1 - - [05/Sep/2024 15:20:17] "GET / HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\Luke\\Documents\\GitHub\\OCR\\ocr_tool\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Detected change in 'C:\\Users\\Luke\\Documents\\GitHub\\OCR\\ocr_tool\\app.py', reloading
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 177-266-338
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 177-266-338
+INFO:werkzeug:127.0.0.1 - - [05/Sep/2024 15:25:14] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Sep/2024 15:25:15] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 177-266-338
+INFO:werkzeug:127.0.0.1 - - [05/Sep/2024 15:25:40] "GET / HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\Luke\\Documents\\GitHub\\OCR\\ocr_tool\\app.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\Luke\\Documents\\GitHub\\OCR\\ocr_tool\\app.py', reloading
+INFO:werkzeug: * Restarting with stat

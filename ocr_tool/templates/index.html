@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OCR Image Upload (Single Processing with Preview and Clipboard Copy)</title>
+    <title>OCR Image Upload with LLM Text Revision</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -38,7 +38,6 @@
         #error {
             color: red;
         }
-        /* Drag and Drop Zone */
         .drop-zone {
             border: 2px dashed #4CAF50;
             padding: 30px;
@@ -50,7 +49,6 @@
         .drop-zone.dragover {
             background-color: #f0f0f0;
         }
-        /* Image preview styling */
         #image-preview {
             display: none;
             max-width: 300px;
@@ -60,22 +58,21 @@
     </style>
     <script>
         let selectedFile;
-        const MAX_FILE_SIZE = 5 * 1024 * 1024;  // 5MB limit
+        const MAX_FILE_SIZE = 5 * 1024 * 1024;
+        let extractedText = '';  // Store the original extracted text
+        let revisedText = '';    // Store the revised text after LLM processing
 
-        // Handle drag and drop functionality
         document.addEventListener('DOMContentLoaded', function () {
             const dropZone = document.getElementById('drop-zone');
             const fileInput = document.querySelector('input[type="file"]');
-            const error = document.getElementById('error');
             const imagePreview = document.getElementById('image-preview');
+            const error = document.getElementById('error');
 
-            // When a file is dragged over the drop zone
             dropZone.addEventListener('dragover', function (e) {
                 e.preventDefault();
                 dropZone.classList.add('dragover');
             });
 
-            // When the file is dropped in the drop zone
             dropZone.addEventListener('dragleave', function () {
                 dropZone.classList.remove('dragover');
             });
@@ -86,20 +83,15 @@
                 selectedFile = e.dataTransfer.files[0];
                 fileInput.files = e.dataTransfer.files;
                 document.getElementById('file-label').textContent = selectedFile.name;
-
-                // Frontend file size validation
                 if (selectedFile.size > MAX_FILE_SIZE) {
                     error.innerHTML = 'File is too large. Maximum size allowed is 5MB.';
-                    imagePreview.style.display = 'none';  // Hide the preview if validation fails
+                    imagePreview.style.display = 'none';
                     return;
                 }
-                error.innerHTML = '';  // Clear any previous error
-
-                // Display image preview
+                error.innerHTML = '';
                 previewImage(selectedFile);
             });
 
-            // Trigger file input when drop zone is clicked
             dropZone.addEventListener('click', function () {
                 fileInput.click();
             });
@@ -107,27 +99,22 @@
             fileInput.addEventListener('change', function () {
                 selectedFile = fileInput.files[0];
                 document.getElementById('file-label').textContent = selectedFile.name;
-
-                // Frontend file size validation
                 if (selectedFile.size > MAX_FILE_SIZE) {
                     error.innerHTML = 'File is too large. Maximum size allowed is 5MB.';
-                    imagePreview.style.display = 'none';  // Hide the preview if validation fails
+                    imagePreview.style.display = 'none';
                     return;
                 }
-                error.innerHTML = '';  // Clear any previous error
-
-                // Display image preview
+                error.innerHTML = '';
                 previewImage(selectedFile);
             });
 
-            // Function to preview the image
             function previewImage(file) {
                 const reader = new FileReader();
                 reader.onload = function (e) {
-                    imagePreview.src = e.target.result;  // Set the src of the img element to the file data
-                    imagePreview.style.display = 'block';  // Show the preview
+                    imagePreview.src = e.target.result;
+                    imagePreview.style.display = 'block';
                 };
-                reader.readAsDataURL(file);  // Read the file as a data URL
+                reader.readAsDataURL(file);
             }
         });
 
@@ -139,17 +126,14 @@
             const result = document.getElementById('result');
             const error = document.getElementById('error');
 
-            // Reset previous results and errors
             result.innerHTML = '';
             error.innerHTML = '';
 
-            // Validate if a file is selected
             if (!selectedFile) {
                 error.innerHTML = 'Please select or drop a file to upload.';
                 return;
             }
 
-            // Validate file size
             if (selectedFile.size > MAX_FILE_SIZE) {
                 error.innerHTML = 'File is too large. Maximum size allowed is 5MB.';
                 return;
@@ -157,7 +141,6 @@
 
             formData.append('file', selectedFile);
 
-            // Show loading message
             loading.style.display = 'block';
 
             try {
@@ -167,20 +150,24 @@
                 });
 
                 const data = await response.json();
-
-                // Hide loading message
                 loading.style.display = 'none';
 
                 if (response.status !== 200) {
                     error.innerHTML = data.error;
                 } else {
-                    // Display the result and store the extracted text in a hidden div
+                    extractedText = data.extracted_text;
                     result.innerHTML = `
                         <h3>Extracted Text:</h3>
-                        <pre>${data.extracted_text}</pre>
-                        <button onclick="downloadText()">Download Text</button>
-                        <button onclick="copyToClipboard()">Copy to Clipboard</button>
-                        <div id="extracted-text" style="display:none;">${encodeURIComponent(data.extracted_text)}</div>
+                        <pre id="extracted-text-display">${extractedText}</pre>
+                        <button onclick="downloadText(extractedText)">Download Text</button>
+                        <button onclick="copyToClipboard(extractedText)">Copy to Clipboard</button>
+                        <button onclick="reviseTextWithLLM()">Revise Text</button>
+                        <div id="revised-text-area" style="display:none;">
+                            <h3>Revised Text:</h3>
+                            <pre id="revised-text-display"></pre>
+                            <button onclick="downloadText(revisedText)">Download Revised Text</button>
+                            <button onclick="copyToClipboard(revisedText)">Copy Revised Text</button>
+                        </div>
                     `;
                 }
             } catch (err) {
@@ -189,55 +176,67 @@
             }
         }
 
-        // Function to download the extracted text as a .txt file
-        function downloadText() {
-            const textElement = document.getElementById('extracted-text');
-            const decodedText = decodeURIComponent(textElement.textContent);  // Decode any encoded text
-            const blob = new Blob([decodedText], { type: 'text/plain' });
+        function downloadText(text) {
+            const blob = new Blob([text], { type: 'text/plain' });
             const link = document.createElement('a');
             link.href = URL.createObjectURL(blob);
             link.download = 'extracted_text.txt';
             link.click();
         }
 
-        // Function to copy the extracted text to the clipboard
-        function copyToClipboard() {
-            const textElement = document.getElementById('extracted-text');
-            const decodedText = decodeURIComponent(textElement.textContent);  // Decode the text
-            navigator.clipboard.writeText(decodedText).then(() => {
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
                 alert('Text copied to clipboard!');
             }).catch(err => {
                 alert('Failed to copy text: ' + err);
             });
         }
+
+        async function reviseTextWithLLM() {
+            const revisedTextArea = document.getElementById('revised-text-area');
+            const error = document.getElementById('error');
+
+            try {
+                const response = await fetch('/revise-text', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ text: extractedText })
+                });
+
+                const data = await response.json();
+                if (response.status !== 200) {
+                    error.innerHTML = data.error;
+                } else {
+                    revisedText = data.revised_text;
+                    document.getElementById('revised-text-display').textContent = revisedText;
+                    revisedTextArea.style.display = 'block';
+                }
+            } catch (err) {
+                error.innerHTML = 'An error occurred while revising the text. Please try again.';
+            }
+        }
     </script>
 </head>
 <body>
-    <h1>Upload an Image for OCR Processing (Single Image with Preview and Clipboard Copy)</h1>
+    <h1>Upload an Image for OCR Processing with LLM Text Revision</h1>
 
-    <!-- Drag and Drop Zone -->
     <div id="drop-zone" class="drop-zone">
         Drag & Drop an image file here or click to upload.
     </div>
 
-    <!-- File input (hidden) -->
     <form onsubmit="uploadImage(event)" enctype="multipart/form-data">
         <input type="file" name="file" accept="image/png, image/jpeg" required hidden>
         <span id="file-label">No file selected</span>
-        <button type="submit">Upload</button>
+        <button type="submit">Upload Image</button>
     </form>
 
-    <!-- Image preview -->
     <img id="image-preview" alt="Image Preview">
 
-    <!-- Loading indicator -->
     <p id="loading" style="display:none;">Processing image... Please wait.</p>
 
-    <!-- Div to display results -->
     <div id="result"></div>
-
-    <!-- Div to display errors -->
-    <div id="error"></div>
-
+    <div id="error" style="color: red;"></div>
 </body>
 </html>

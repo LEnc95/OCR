@@ -4,14 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OCR Image Upload</title>
+    <script>
+        // JavaScript function to handle form submission
+        async function uploadImage(event) {
+            event.preventDefault();
+
+            const formData = new FormData(event.target);
+            const fileInput = document.querySelector('input[type="file"]');
+            const loading = document.getElementById('loading');
+            const result = document.getElementById('result');
+            const error = document.getElementById('error');
+
+            // Reset previous results and errors
+            result.innerHTML = '';
+            error.innerHTML = '';
+
+            // Show loading message
+            loading.style.display = 'block';
+
+            try {
+                // Send the form data using Fetch API
+                const response = await fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                // Parse the response as JSON
+                const data = await response.json();
+
+                // Hide loading message
+                loading.style.display = 'none';
+
+                // Check if there was an error
+                if (response.status !== 200) {
+                    error.innerHTML = data.error;
+                } else {
+                    result.innerHTML = `<h3>Extracted Text:</h3><p>${data.extracted_text}</p>`;
+                }
+            } catch (err) {
+                // Hide loading message
+                loading.style.display = 'none';
+                error.innerHTML = 'An error occurred while processing the image. Please try again.';
+            }
+        }
+    </script>
 </head>
 <body>
     <h1>Upload an Image for OCR Processing</h1>
     
     <!-- Form to upload file -->
-    <form action="/upload" method="POST" enctype="multipart/form-data">
+    <form onsubmit="uploadImage(event)" enctype="multipart/form-data">
         <input type="file" name="file" accept="image/png, image/jpeg" required>
         <button type="submit">Upload</button>
     </form>
+
+    <!-- Loading indicator -->
+    <p id="loading" style="display:none;">Processing image... Please wait.</p>
+
+    <!-- Div to display results -->
+    <div id="result"></div>
+
+    <!-- Div to display errors -->
+    <div id="error" style="color: red;"></div>
+
 </body>
 </html>

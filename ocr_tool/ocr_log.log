@@ -68,3 +68,41 @@ INFO:app:Processed file: Screenshotex1.png, extracted text: Overview
 
 Giant Eagle strives to be a best place t...
 INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:42:54] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 177-266-338
+INFO:app:Processed file: Screenshotex1.png, extracted text: Overview
+
+Giant Eagle strives to be a best place t...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:47:26] "POST /upload HTTP/1.1" 200 -
+INFO:app:Processed file: Screenshotex1.png, extracted text: Overview
+
+Giant Eagle strives to be a best place t...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:47:47] "POST /upload HTTP/1.1" 200 -
+INFO:app:Processed file: Sex2.png, extracted text: Video calls and meetings for
+everyone
+...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:47:59] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:48:12] "[31m[1mPOST /upload HTTP/1.1[0m" 413 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 177-266-338
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:48:31] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:48:33] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:48:38] "[31m[1mPOST /upload HTTP/1.1[0m" 413 -
+ERROR:app:Invalid file type uploaded: katy-cat-animation.gif
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:49:48] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:49:56] "[31m[1mPOST /upload HTTP/1.1[0m" 413 -
+INFO:app:Processed file: hindiLangtest.png, extracted text: \u0906\u092a\u0915\u093e \u092a\u0938\u0902\u0926\u0940\u0926\u093e \u092b\u0932 \u0915\u092f\u093e \u0939\u0948
+...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:50:01] "POST /upload HTTP/1.1" 200 -
+INFO:app:Processed file: Sex2.png, extracted text: Video calls and meetings for
+everyone
+...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:50:10] "POST /upload HTTP/1.1" 200 -

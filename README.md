@@ -107,7 +107,3 @@ The application can be deployed to Azure for scalable cloud-based OCR processing
 ## License
 
 This project is licensed under the MIT License.
-
----
-
-Let me know if you need further customization for the README or any additional sections!

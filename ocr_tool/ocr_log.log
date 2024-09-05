@@ -18,3 +18,53 @@ INFO:app:Processed file: Screenshotex1.png, extracted text: Overview
 
 Giant Eagle strives to be a best place t...
 INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:13:38] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 177-266-338
+INFO:app:Processed file: SamplePNGImage_30mbmb.png, extracted text: ...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:30:30] "POST /upload HTTP/1.1" 200 -
+INFO:app:Processed file: SamplePNGImage_30mbmb.png, extracted text: ...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:31:23] "POST /upload HTTP/1.1" 200 -
+ERROR:app:Invalid file type uploaded: katy-cat-animation.gif
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:31:57] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
+INFO:app:Processed file: spaLangtest.png, extracted text: 44 \u0c67\u0c66 save \u0baa uno des sus
+...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:33:32] "POST /upload HTTP/1.1" 200 -
+INFO:app:Processed file: spaLangtest.png, extracted text: ...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:35:47] "POST /upload HTTP/1.1" 200 -
+INFO:app:Processed file: spaLangtest.png, extracted text: ...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:35:50] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\Luke\\Documents\\GitHub\\OCR\\ocr_tool\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 177-266-338
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 177-266-338
+INFO:app:Processed file: spaLangtest.png, extracted text: ...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:37:48] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:37:58] "[31m[1mPOST /upload HTTP/1.1[0m" 413 -
+INFO:app:Processed file: hindiLangtest.png, extracted text: \u0906\u092a\u0915\u093e \u092a\u0938\u0902\u0926\u0940\u0926\u093e \u092b\u0932 \u0915\u092f\u093e \u0939\u0948
+...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:38:56] "POST /upload HTTP/1.1" 200 -
+INFO:app:Processed file: hindiLangtest.png, extracted text: \u0906\u092a\u0915\u093e \u092a\u0938\u0902\u0926\u0940\u0926\u093e \u092b\u0932 \u0915\u092f\u093e \u0939\u0948
+...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:38:59] "POST /upload HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 177-266-338
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:42:15] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:42:15] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:app:Processed file: Screenshotex1.png, extracted text: Overview
+
+Giant Eagle strives to be a best place t...
+INFO:werkzeug:127.0.0.1 - - [04/Sep/2024 22:42:54] "POST /upload HTTP/1.1" 200 -

@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from PIL import Image
 import pytesseract
 import io
@@ -11,11 +11,24 @@ app = Flask(__name__)
 # Specify the path to tesseract.exe (update if installed elsewhere)
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
+# Set the maximum file size to 5MB (5 * 1024 * 1024 bytes)
+app.config['MAX_CONTENT_LENGTH'] = 5 * 1024 * 1024  # 5MB limit
+
 # Configure logging
 logging.basicConfig(filename='ocr_log.log', level=logging.INFO)
 
 # Define the languages to support (English, Spanish, French, Hindi, Bengali, Tamil, etc.)
 languages = 'eng+spa+fra+hin+ben+tam+tel+pan+mar+iku'
+
+# Serve the form for uploading files
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+# Error handler for files exceeding the size limit
+@app.errorhandler(413)
+def file_too_large(e):
+    return jsonify({'error': 'File too large. Maximum size allowed is 5MB.'}), 413
 
 # Endpoint to handle file upload and OCR processing
 @app.route('/upload', methods=['POST'])
@@ -33,11 +46,6 @@ def upload_file():
     if not file.filename.lower().endswith(('.png', '.jpg', '.jpeg')):
         app.logger.error(f'Invalid file type uploaded: {file.filename}')
         return jsonify({'error': 'Invalid file type. Only PNG, JPG, and JPEG are allowed.'}), 400
-
-    # Validate file size (limit to 5MB)
-    if file.content_length > 5 * 1024 * 1024:  # 5MB limit
-        app.logger.error(f'File too large: {file.filename}')
-        return jsonify({'error': 'File too large. Maximum size allowed is 5MB.'}), 400
 
     try:
         # Convert the file to an image

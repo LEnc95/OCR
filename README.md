@@ -71,7 +71,7 @@ pip install -r requirements.txt
 Alternatively, if `requirements.txt` isn't present, manually install the dependencies:
 
 ```bash
-pip install flask pillow pytesseract opencv-python numpy symspellpy transformers torch
+pip install flask pillow pytesseract opencv-python numpy symspellpy transformers torch sentencepiece
 ```
 
 ### Create `requirements.txt`

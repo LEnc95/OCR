@@ -63,7 +63,7 @@ In addition to the basic dependencies like Flask, Pillow, and Pytesseract, the f
 Clone the repository and install the required dependencies:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/LEnc95/OCR.git
 cd <repository-folder>
 pip install -r requirements.txt
 ```

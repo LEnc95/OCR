@@ -55,6 +55,24 @@
             margin-top: 20px;
             border: 1px solid #ddd;
         }
+
+        /* Styling for the revised text container */
+        #revised-text-area {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+            word-wrap: break-word; /* Ensure long words break */
+            white-space: pre-wrap;  /* Preserve line breaks */
+            max-width: 100%;        /* Ensure it doesn't exceed the width of the page */
+            overflow-wrap: break-word; /* Handle long unbroken words */
+        }
+
+        pre {
+            word-wrap: break-word; /* Ensure text wraps correctly */
+            white-space: pre-wrap; /* Preserve spaces and line breaks */
+            max-width: 100%;       /* Ensure it fits within the page width */
+        }
     </style>
     <script>
         let selectedFile;
@@ -238,5 +256,6 @@
 
     <div id="result"></div>
     <div id="error" style="color: red;"></div>
+
 </body>
 </html>
